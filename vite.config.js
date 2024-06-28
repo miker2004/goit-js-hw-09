@@ -9,6 +9,7 @@ export default defineConfig(({ command }) => {
       [command === 'serve' ? 'global' : '_global']: {},
     },
     root: 'src',
+    base: '/goit-js-hw-09/', 
     build: {
       sourcemap: true,
       rollupOptions: {
@@ -21,7 +22,7 @@ export default defineConfig(({ command }) => {
           },
           entryFileNames: 'commonHelpers.js',
         },
-        external: ['simplelightbox'], // Dodaj tę linię
+        external: ['simplelightbox'],
       },
       outDir: '../dist',
     },
