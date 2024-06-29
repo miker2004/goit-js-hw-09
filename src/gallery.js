@@ -1,7 +1,5 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-
-document.addEventListener("DOMContentLoaded", () => {
     const gallery = document.querySelector("ul.gallery");
     const images = [
         {
@@ -100,4 +98,3 @@ document.head.insertAdjacentHTML('beforeend', `<style>${galleryStyles}</style>`)
         captionsData: 'alt',
         captionDelay: 250,
     });
-});
