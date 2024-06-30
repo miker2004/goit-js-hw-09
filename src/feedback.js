@@ -57,15 +57,34 @@ if (formDataJSON) {
     messageTextarea.value = formData.message || '';
 }
 
+const saveToLocalStorage = () => {
+    const emailValue = emailInput.value.trim();
+    const messageValue = messageTextarea.value.trim();
+    const formData = {
+        email: emailValue,
+        message: messageValue
+    };
+    localStorage.setItem('feedback-form-state', JSON.stringify(formData));
+};
+
+emailInput.addEventListener('input', saveToLocalStorage);
+messageTextarea.addEventListener('input', saveToLocalStorage);
+
 form.addEventListener('submit', function(event) {
     event.preventDefault(); 
-    const emailValue = emailInput.value;
-    const messageValue = messageTextarea.value;
+    const emailValue = emailInput.value.trim();
+    const messageValue = messageTextarea.value.trim();
+    
+    if (!emailValue || !messageValue) {
+        alert('Proszę wypełnić wszystkie pola formularza.');
+        return;
+    }
+
     const formData = {
         email: emailValue,
         message: messageValue
     };
     console.log(formData);
-    localStorage.setItem('feedback-form-state', JSON.stringify(formData));
+    localStorage.removeItem('feedback-form-state'); 
     form.reset(); 
 });
